@@ -9,6 +9,10 @@
 
 </div>
 
+<div align="center">
+  <img src="/doc/Malloc.png">
+</div>
+
 # Malloc
 
 ## 🎯 Descripción
