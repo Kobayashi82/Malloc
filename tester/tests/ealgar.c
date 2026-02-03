@@ -6,7 +6,7 @@
 /*   By: vzurera- <vzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:12:11 by ealgar-c          #+#    #+#             */
-/*   Updated: 2025/07/07 18:24:24 by vzurera-         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:48:42 by vzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 	#define BLUE    "\033[0;34m"
 	#define YELLOW  "\033[0;33m"
 	#define RESET   "\033[0m"
+	#define M_CHECK_ACTION -5
 
+	int mallopt(int param, int value);
 	void show_alloc_mem(void);
 
 #pragma endregion
@@ -233,6 +235,8 @@
 			show_alloc_mem();
 
 			ft_printf(1, BLUE "\tFreeing some blocks (3,7,11)...\n" RESET);
+			// Esto produce double free y invalid pointer porque se liberan aquí y en el último bloque for
+			// El invalid pointer es porque ptrs[11] crea una zona LARGE que luego se elimina
 			free(ptrs[3]); ft_printf(1, BLUE "\tFreed memory at %p\n" RESET, ptrs[3]);
 			free(ptrs[7]); ft_printf(1, BLUE "\tFreed memory at %p\n" RESET, ptrs[7]);
 			free(ptrs[11]); ft_printf(1, BLUE "\tFreed memory at %p\n" RESET, ptrs[11]);
@@ -298,6 +302,9 @@
 #pragma region "Main"
 
 int main(void) {
+
+	mallopt(M_CHECK_ACTION, 1); // Para evitar abort() en el test_05
+
 	ft_printf(1, GREEN "\t\tSTARTING MALLOC TESTS:\n" RESET);
 
 	ft_printf(1, YELLOW "\t\t00 - Hello world\n" RESET);

@@ -6,7 +6,7 @@
 /*   By: vzurera- <vzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 21:42:58 by vzurera-          #+#    #+#             */
-/*   Updated: 2025/07/05 17:17:21 by vzurera-         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:58:51 by vzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@
 				int pid2 = fork();
 
 				if (pid2 == -1)		{ printf("[ERROR]\tFork 2 failed\n");	exit(1); }
-				else if (pid2 == 0)	{ heap_test();								exit(0); }
+				else if (pid2 == 0)	{ heap_test();							exit(0); }
 
 				heap_test();
 				waitpid(pid2, NULL, 0);
@@ -215,10 +215,10 @@
 #pragma region "Main"
 
 	int main() {
-		mallopt(M_DEBUG, DEBUG_MODE);				// 
-		mallopt(M_LOGGING, DEBUG_MODE ? 2 : 0);		// 
-		mallopt(M_ARENA_TEST, 20);					// 
-		mallopt(M_ARENA_MAX, 0);					// 
+		mallopt(M_DEBUG, DEBUG_MODE);
+		mallopt(M_LOGGING, DEBUG_MODE ? 2 : 0);
+		mallopt(M_ARENA_TEST, 20);
+		mallopt(M_ARENA_MAX, 0);
 
 		heap_test();
 

@@ -6,9 +6,8 @@
 
 !doc
 !doc/**
-doc/malloc\ 6.2.pdf
+doc/malloc\ 6.3.pdf
 doc/Evaluation.pdf
-doc/Evaluation.md
 
 !inc
 !inc/**
@@ -22,13 +21,15 @@ doc/Evaluation.md
 !LICENSE
 !Malloc.png
 
-tester/
+!tester/
+!tester/complete/
 !tester/complete/Makefile
 !tester/complete/run_all_test.c
 !tester/complete/test_alignment.c
 !tester/complete/test_extra.c
 !tester/complete/test_main.c
 !tester/complete/test_stress.c
+!tester/evaluation/
 !tester/evaluation/test0.c
 !tester/evaluation/test1.c
 !tester/evaluation/test2.c
@@ -37,11 +38,12 @@ tester/
 !tester/evaluation/test5.c
 !tester/evaluation/test6.c
 !tester/evaluation/test7.c
+!tester/tests/
 !tester/tests/basic.c
 !tester/tests/ealgar.c
 !tester/tests/normal.c
 !tester/complete.sh
 !tester/evaluation.sh
-load.sh
-test.sh
-unload.sh
+!tester/test.sh
+!tester/load.sh
+!tester/unload.sh

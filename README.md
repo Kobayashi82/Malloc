@@ -123,15 +123,12 @@ gcc -o program program.c -I./inc -L./lib -lft_malloc -Wl,-rpath=./lib
 ./tester/evaluation.sh
 
 # Pruebas completas
-./tester/complete.sh       		 # Todas laspruebas
+./tester/complete.sh       		 # Todas las pruebas
 ./tester/complete.sh --main      # Pruebas principales
 ./tester/complete.sh --alignment # Pruebas de alineamiento
 ./tester/complete.sh --extra     # Pruebas de funcionalidades adicionales
 ./tester/complete.sh --stress    # Pruebas de estrés
 ./tester/complete.sh --help      # Muestra la ayuda
-
-# Prueba de comparación com glibc malloc
-./tester/bench.sh program
 ```
 
 ## 🔧 Variables de Entorno

@@ -6,7 +6,7 @@
 /*   By: vzurera- <vzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 21:42:48 by vzurera-          #+#    #+#             */
-/*   Updated: 2025/07/06 20:06:50 by vzurera-         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:55:29 by vzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 #pragma region "Defines"
 
-	#define M_DEBUG		2
-	#define M_LOGGING	0
+	#define M_DEBUG		7
+	#define M_LOGGING	8
 
 	void show_alloc_mem(void);
 	void show_alloc_mem_ex(void *ptr, size_t offset, size_t length);

@@ -6,7 +6,7 @@
 /*   By: vzurera- <vzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:07:24 by vzurera-          #+#    #+#             */
-/*   Updated: 2025/07/06 18:23:20 by vzurera-         ###   ########.fr       */
+/*   Updated: 2026/02/03 19:25:34 by vzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,16 @@
 
 #pragma region "Enumerators"
 
-	enum { TINY, SMALL, LARGE, FASTBIN, SMALLBIN, UNSORTEDBIN, LARGEBIN, MTX_INIT, MTX_LOCK, MTX_TRYLOCK, MTX_UNLOCK, MTX_DESTROY };
+	enum {
+		TINY,
+		SMALL,
+		LARGE,
+		MTX_INIT,
+		MTX_LOCK,
+		MTX_TRYLOCK,
+		MTX_UNLOCK,
+		MTX_DESTROY
+	};
 
 #pragma endregion
 
@@ -125,7 +134,7 @@
 		int				id;							// Arena ID (0 = main thread)
 		int				alloc_count;				// Total number of allocations
 		int				free_count;					// Total number of frees
-		void			*bins[257];					// LIFO bins
+		void			*bins[257];					// Bins
 		t_heap_header	*heap_header;				// Pointer to the first heap header
 		struct s_arena	*next;          			// Pointer to the next arena
 		pthread_mutex_t	mutex;          			// Arena mutex for thread safety
@@ -147,7 +156,7 @@
 		int				arena_count;				// Number of arenas created
 		t_options		options;					// Global configuration options
 		t_arena			arena;						// Main arena (thread 0)
-		size_t			alloc_zero_counter;			// Counter for malloc(0) calls
+		size_t			alloc_zero_counter;			// Counter for alloc calls
 		char			*hist_buffer;				// History buffer
 		size_t			hist_size;					// Size of history buffer
 		size_t			hist_pos;					// Current write position in history buffer
