@@ -20,6 +20,7 @@ doc/Evaluation.md
 !.gitignore
 !README.md
 !LICENSE
+!Malloc.png
 
 tester/
 !tester/complete/Makefile
