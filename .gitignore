@@ -35,6 +35,8 @@ tester/
 !tester/evaluation/test3.c
 !tester/evaluation/test4.c
 !tester/evaluation/test5.c
+!tester/evaluation/test6.c
+!tester/evaluation/test7.c
 !tester/tests/basic.c
 !tester/tests/ealgar.c
 !tester/tests/normal.c

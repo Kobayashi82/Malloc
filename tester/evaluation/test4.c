@@ -1,23 +1,26 @@
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
+#include "../../inc/malloc.h"
 
-void print(char *s)
-{
-	write(1, s, strlen(s));
-}
+#define M (1024 * 1024)
 
 int main()
 {
-	char *addr;
-
-	addr = malloc(16);
-	free(NULL);
-	free((void *)addr + 5);
-	if (realloc((void *)addr + 5, 10) == NULL)
-		print("Hello\n");
-	if (realloc((void *)addr + 5, 0) == NULL)
-		print("Hello\n");
+    void* a = malloc(1);
+    void* b = malloc(2);
+    void* c = malloc(4);
+    void* d = malloc(8);
+    void* e = malloc(16);
+    void* f = malloc(32);
+    void* g = malloc(64);
+    void* h = malloc(128);
+    void* i = malloc(256);
+    void* j = malloc(512);
+    void* k = malloc(1024);
+    void* l = malloc(1024 * 2);
+    void* m = malloc(1024 * 4); 
+    void* n = malloc(1024 * 32);
+    void* o = malloc(M);
+    void* p = malloc(16*M);
+    void* q = malloc(128*M);
+    show_alloc_mem(); 
+    return (0); 
 }
-
-// Note: Use MALLOC_CHECK_=1 or MALLOC_CHECK_=2 to prevent abort on invalid pointer

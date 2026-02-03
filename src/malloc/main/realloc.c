@@ -6,7 +6,7 @@
 /*   By: vzurera- <vzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 11:32:56 by vzurera-          #+#    #+#             */
-/*   Updated: 2025/07/08 10:32:49 by vzurera-         ###   ########.fr       */
+/*   Updated: 2026/02/03 18:18:18 by vzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@
 		bool	is_new = false;
 		t_heap	*heap = NULL;
 		t_arena	*arena = &g_manager.arena;
+		size_t	old_size = 0;
 
 		mutex(&g_manager.mutex, MTX_LOCK);
 
@@ -135,7 +136,7 @@
 				return (abort_now(), NULL);
 			}
 
-			size_t	old_size = GET_SIZE((t_chunk *)GET_HEAD(ptr));
+			old_size = GET_SIZE((t_chunk *)GET_HEAD(ptr));
 			t_chunk *chunk = GET_HEAD(ptr);
 			size_t	chunk_size = GET_SIZE(chunk);
 			if (ALIGN(size) <= chunk_size) {
@@ -221,6 +222,16 @@
 			}
 
 		mutex(&arena->mutex, MTX_UNLOCK);
+
+		if (new_ptr == ptr && old_size && print_log(0)) {
+			size_t req_size = ALIGN(size);
+			if (req_size > old_size)
+				aprintf(g_manager.options.fd_out, 1, "%p\t [REALLOC] Extended to %u bytes\n", ptr, req_size);
+			else if (req_size < old_size)
+				aprintf(g_manager.options.fd_out, 1, "%p\t [REALLOC] Shrunk to %u bytes\n", ptr, req_size);
+			else
+				aprintf(g_manager.options.fd_out, 1, "%p\t [REALLOC] Size unchanged %u bytes\n", ptr, req_size);
+		}
 
 		if (new_ptr && g_manager.options.PERTURB && heap->type != LARGE) {
 			size_t new_size = GET_SIZE((t_chunk *)GET_HEAD(new_ptr));

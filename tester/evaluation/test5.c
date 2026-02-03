@@ -2,21 +2,33 @@
 #include <string.h>
 #include <unistd.h>
 
-void *show_alloc_mem_ex(void *ptr, size_t offset, size_t length);
-void *show_alloc_mem();
-
-int main()
+void print(char *s)
 {
-	malloc(1024);
-	malloc(1024 * 32);
-	malloc(1024 * 1024);
-	malloc(1024 * 1024 * 16);
-	malloc(1024 * 1024 * 128);
-	show_alloc_mem();
+    write(1, s, strlen(s));
+}
 
-	write(1, "\n\n\033[0;36m  SHOW_ALLOC_MEM_EX\n---------------------\n\n\033[0m", 56);
-	char *ptr = malloc(30);
-	strcpy(ptr, "Hello World!\n");
-	show_alloc_mem_ex(ptr, 0, 0);
-	return (0);
+int     main()
+{
+    int     i;
+    int     alignment;
+    char    *addr;
+
+    i = 1;
+    alignment = 2 * sizeof(size_t);
+    while (i <= 100)
+    {
+        addr = (char*)malloc(i);
+        if (addr == NULL)
+        {
+            print("Failed to allocate memory\n");
+            exit(1);
+        }
+        if ((((unsigned long) (addr)) % alignment) != 0)
+        {
+            print("malloc returned a non aligned boundary\n");
+            exit(1);
+        }
+        i++;
+        free(addr);
+    }
 }
