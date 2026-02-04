@@ -17,34 +17,33 @@
 
 [README en Español](README_es.md)
 
-## 🎯 Description
-
 Malloc is a 42 School project that implements a complete dynamic memory management system. This implementation goes significantly beyond the basic requirements, incorporating advanced allocation techniques used by production allocators like glibc malloc.
 
 ## ✨ Features
 
-### 🔧 Core functionality
+### Core Functionality
+
 - **Standard functions**: `malloc()`, `calloc()`, `free()`, `realloc()`
 - **Additional functions**: `reallocarray()`, `aligned_alloc()`, `memalign()`, `posix_memalign()`, `malloc_usable_size()`, `valloc()`, `pvalloc()`
 - **Debug functions**: `mallopt()`, `show_alloc_history()`, `show_alloc_mem()`, `show_alloc_mem_ex()`
 - **Thread safety**: Full support for multithreaded apps and forks without deadlocks
 - **Zone management**: TINY, SMALL, and LARGE zones
 
-### 🚀 Advanced features
+### Advanced features
 
-#### **Arena system**
-- **Multiple arenas**: Each thread can use separate arenas to reduce contention
-- **Load balancing**: Smart distribution across available arenas
+#### Arena system
+- `Multiple arenas`: Each thread can use separate arenas to reduce contention
+- `Load balancing`: Smart distribution across available arenas
 
-#### **Memory optimizations**
-- **Bins**: Management of freed chunks to optimize reuse
-- **Coalescing**: Automatic merging of adjacent free blocks
-- **Alignment**: Optimal memory alignment
-- **Headers**: Efficient use of header space
+#### Memory optimizations
+- `Bins`: Management of freed chunks to optimize reuse
+- `Coalescing`: Automatic merging of adjacent free blocks
+- `Alignment`: Optimal memory alignment
+- `Headers`: Efficient use of header space
 
-#### **Protection and safety**
-- **Pointer validation**: Validates addresses within managed space
-- **Corruption checks**: Memory integrity verification
+#### Protection and safety
+- `Pointer validation`: Validates addresses within managed space
+- `Corruption checks`: Memory integrity verification
 
 ## 🔧 Installation
 
@@ -83,7 +82,7 @@ export LD_PRELOAD="[malloc_path]/lib/libft_malloc.so"
 ./program
 ```
 
-### Integration in C code
+### Integration code
 ```c
 #include <stdlib.h>
 #include "malloc.h"
@@ -133,7 +132,7 @@ gcc -o program program.c -I./inc -L./lib -lft_malloc -Wl,-rpath=./lib
 ./tester/complete.sh --help       # Show help
 ```
 
-## 🔧 Environment variables
+## 🔧 Environment Variables
 
 The following environment variables can configure malloc behavior:
 
@@ -148,7 +147,7 @@ The following environment variables can configure malloc behavior:
 | **MALLOC_LOGGING**       | `M_LOGGING`               | Enables logging                          |
 | **MALLOC_LOGFILE**       | *(file path)*             | Log file (default: `"auto"`)             |
 
-## 📚 Additional functions
+## 📚 Additional Functions
 
 #### MALLOPT
 

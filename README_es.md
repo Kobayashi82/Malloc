@@ -17,34 +17,33 @@
 
 [README in English](README.md)
 
-## 🎯 Descripción
-
 Malloc es un proyecto de la escuela 42 que implementa un sistema completo de gestión de memoria dinámico. Esta implementación va significativamente más allá de los requisitos básicos, incorporando técnicas avanzadas de asignación de memoria utilizadas en asignadores de producción como glibc malloc.
 
 ## ✨ Características
 
-### 🔧 Funcionalidades
+### Funcionalidades Básicas
+
 - **Funciones Estándar**: `malloc()`, `calloc()`, `free()`, `realloc()`
 - **Funciones Adicionales**: `reallocarray()`, `aligned_alloc()`, `memalign()`, `posix_memalign()`, `malloc_usable_size()`, `valloc()`, `pvalloc()`
 - **Funciones de Depuración**: `mallopt()`, `show_alloc_history()`, `show_alloc_mem()`, `show_alloc_mem_ex()`
 - **Thread Safety**: Soporte completo para aplicaciones multi-hilo y forks sin dead-locks
 - **Gestión de Zonas**: Sistema de zonas TINY, SMALL y LARGE
 
-### 🚀 Características Avanzadas
+### Características Avanzadas
 
-#### **Sistema de Arenas**
-- **Múltiples Arenas**: Cada hilo puede usar arenas separadas para reducir contención
-- **Balanceado de Carga**: Distribución inteligente entre arenas disponibles
+#### Sistema de Arenas
+- `Múltiples Arenas`: Cada hilo puede usar arenas separadas para reducir contención
+- `Balanceado de Carga`: Distribución inteligente entre arenas disponibles
 
-#### **Optimizaciones de Memoria**
-- **Bins**: Gestión de chunks liberados para optimizar reutilización
-- **Coalescing**: Fusión automática de bloques adyacentes libres
-- **Alineación**: Alineación óptima de memoria
-- **Encabezados**: Uso eficiente del espacio para el encabezado
+#### Optimizaciones de Memoria
+- `Bins`: Gestión de chunks liberados para optimizar reutilización
+- `Coalescing`: Fusión automática de bloques adyacentes libres
+- `Alineación`: Alineación óptima de memoria
+- `Encabezados`: Uso eficiente del espacio para el encabezado
 
-#### **Protección y Seguridad**
-- **Validación de Punteros**: Validación de la dirección dentro del espacio gestionado
-- **Comprobación de Corrupcion**: Verificación de integridad de memoria
+#### Protección y Seguridad
+- `Validación de Punteros`: Validación de la dirección dentro del espacio gestionado
+- `Comprobación de Corrupcion`: Verificación de integridad de memoria
 
 ## 🔧 Instalación
 
@@ -83,7 +82,7 @@ export LD_PRELOAD="[malloc_path]/lib/libft_malloc.so"
 ./program
 ```
 
-### Integración en Código C
+### Integración en Código
 ```c
 #include <stdlib.h>
 #include "malloc.h"
@@ -102,7 +101,7 @@ int main() {
 }
 ```
 
-### Compilación con la Librería
+### Compilación con la librería
 ```bash
 # Compilar y enlazar
 gcc -o program program.c -I./inc -L./lib -lft_malloc -Wl,-rpath=./lib
@@ -125,7 +124,7 @@ gcc -o program program.c -I./inc -L./lib -lft_malloc -Wl,-rpath=./lib
 ./tester/evaluation.sh
 
 # Pruebas completas
-./tester/complete.sh        		 # Todas las pruebas
+./tester/complete.sh        	 # Todas las pruebas
 ./tester/complete.sh --main      # Pruebas principales
 ./tester/complete.sh --alignment # Pruebas de alineamiento
 ./tester/complete.sh --extra     # Pruebas de funcionalidades adicionales
