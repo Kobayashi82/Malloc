@@ -17,7 +17,7 @@
 
 [README en Español](README_es.md)
 
-Malloc is a 42 School project that implements a complete dynamic memory management system. This implementation goes significantly beyond the basic requirements, incorporating advanced allocation techniques used by production allocators like glibc malloc.
+`Malloc` is a `42 School` project that implements a complete dynamic memory management system. This implementation goes significantly beyond the basic requirements, incorporating advanced allocation techniques used by production allocators like glibc malloc.
 
 ## ✨ Features
 
