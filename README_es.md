@@ -5,7 +5,7 @@
 ![Dynamic Allocation](https://img.shields.io/badge/Dynamic-Allocation-green?style=for-the-badge)
 ![C Language](https://img.shields.io/badge/Language-C-red?style=for-the-badge)
 
-*A reimplementation of malloc and its associated functions*
+*Una reimplementación de malloc y sus funciones asociadas*
 
 </div>
 
@@ -15,144 +15,144 @@
 
 # Malloc
 
-[README en Español](README_es.md)
+[README in English](README.md)
 
-## 🎯 Description
+## 🎯 Descripción
 
-Malloc is a 42 School project that implements a complete dynamic memory management system. This implementation goes significantly beyond the basic requirements, incorporating advanced allocation techniques used by production allocators like glibc malloc.
+Malloc es un proyecto de la escuela 42 que implementa un sistema completo de gestión de memoria dinámico. Esta implementación va significativamente más allá de los requisitos básicos, incorporando técnicas avanzadas de asignación de memoria utilizadas en asignadores de producción como glibc malloc.
 
-## ✨ Features
+## ✨ Características
 
-### 🔧 Core functionality
-- **Standard functions**: `malloc()`, `calloc()`, `free()`, `realloc()`
-- **Additional functions**: `reallocarray()`, `aligned_alloc()`, `memalign()`, `posix_memalign()`, `malloc_usable_size()`, `valloc()`, `pvalloc()`
-- **Debug functions**: `mallopt()`, `show_alloc_history()`, `show_alloc_mem()`, `show_alloc_mem_ex()`
-- **Thread safety**: Full support for multithreaded apps and forks without deadlocks
-- **Zone management**: TINY, SMALL, and LARGE zones
+### 🔧 Funcionalidades
+- **Funciones Estándar**: `malloc()`, `calloc()`, `free()`, `realloc()`
+- **Funciones Adicionales**: `reallocarray()`, `aligned_alloc()`, `memalign()`, `posix_memalign()`, `malloc_usable_size()`, `valloc()`, `pvalloc()`
+- **Funciones de Depuración**: `mallopt()`, `show_alloc_history()`, `show_alloc_mem()`, `show_alloc_mem_ex()`
+- **Thread Safety**: Soporte completo para aplicaciones multi-hilo y forks sin dead-locks
+- **Gestión de Zonas**: Sistema de zonas TINY, SMALL y LARGE
 
-### 🚀 Advanced features
+### 🚀 Características Avanzadas
 
-#### **Arena system**
-- **Multiple arenas**: Each thread can use separate arenas to reduce contention
-- **Load balancing**: Smart distribution across available arenas
+#### **Sistema de Arenas**
+- **Múltiples Arenas**: Cada hilo puede usar arenas separadas para reducir contención
+- **Balanceado de Carga**: Distribución inteligente entre arenas disponibles
 
-#### **Memory optimizations**
-- **Bins**: Management of freed chunks to optimize reuse
-- **Coalescing**: Automatic merging of adjacent free blocks
-- **Alignment**: Optimal memory alignment
-- **Headers**: Efficient use of header space
+#### **Optimizaciones de Memoria**
+- **Bins**: Gestión de chunks liberados para optimizar reutilización
+- **Coalescing**: Fusión automática de bloques adyacentes libres
+- **Alineación**: Alineación óptima de memoria
+- **Encabezados**: Uso eficiente del espacio para el encabezado
 
-#### **Protection and safety**
-- **Pointer validation**: Validates addresses within managed space
-- **Corruption checks**: Memory integrity verification
+#### **Protección y Seguridad**
+- **Validación de Punteros**: Validación de la dirección dentro del espacio gestionado
+- **Comprobación de Corrupcion**: Verificación de integridad de memoria
 
-## 🔧 Installation
+## 🔧 Instalación
 
 ```bash
 git clone git@github.com:Kobayashi82/Malloc.git
 cd malloc
 make
 
-# The library is generated in ./lib as:
+# La librería se genera en ./lib como:
 # libft_malloc_$(HOSTTYPE).so
 
-# and a symbolic link is created:
+# y se crea el enlace simbolico:
 # libft_malloc.so -> libft_malloc_$(HOSTTYPE).so
 ```
 
-## 🖥️ Usage
+## 🖥️ Uso
 
-### Basic usage
+### Uso Básico
 ```bash
-# Preload the library
+# Precargar la librería
 export LD_LIBRARY_PATH="[malloc_path]/lib:$LD_LIBRARY_PATH"
 export LD_PRELOAD="libft_malloc.so"
 
-# or
+# o
 
 export LD_PRELOAD="[malloc_path]/lib/libft_malloc.so"
 
 # o
 
-# Run loader
+# Ejecutar loader
 ./tester/load.sh
 
-# and then
+# y luego 
 
-# Run
+# Ejecutar
 ./program
 ```
 
-### Integration in C code
+### Integración en Código C
 ```c
 #include <stdlib.h>
 #include "malloc.h"
 
 int main() {
-    // Use malloc normally
+    // Usar malloc normalmente
     void *ptr = malloc(1024);
     
-    // Show memory state
+    // Visualizar estado de memoria
     show_alloc_mem();
     
-    // Free memory
+    // Liberar memoria
     free(ptr);
     
     return 0;
 }
 ```
 
-### Compile with the library
+### Compilación con la Librería
 ```bash
-# Compile and link
+# Compilar y enlazar
 gcc -o program program.c -I./inc -L./lib -lft_malloc -Wl,-rpath=./lib
 
-# -o program		Executable name
-# -I./inc			Searches .h in ./inc (preprocessor)
-# -L./lib			Adds ./lib to shared library search path (linker)
-# -lft_malloc		Links with libft_malloc.so
-# -Wl,-rpath=./lib	Binary will look for shared libraries in ./lib at runtime
+# -o program		Nombre del ejecutable
+# -I./inc			Busca los .h en ./inc (preprocesador)
+# -L./lib			Añade ./lib al buscador de librerias compartidas (linker)
+# -lft_malloc		Enlaza con libft_malloc.so
+# -Wl,-rpath=./lib	El binario buscará librerías compartidas en ./lib durante la ejecución
 
-# Run
+# Ejecutar
 ./program
 ```
 
 ## 🧪 Testing
 
-### Test suite
+### Suite de Pruebas
 ```bash
-# Evaluation test
+# Prueba de evaluación
 ./tester/evaluation.sh
 
-# Full tests
-./tester/complete.sh              # All tests
-./tester/complete.sh --main       # Main tests
-./tester/complete.sh --alignment  # Alignment tests
-./tester/complete.sh --extra      # Extra features tests
-./tester/complete.sh --stress     # Stress tests
-./tester/complete.sh --help       # Show help
+# Pruebas completas
+./tester/complete.sh        		 # Todas las pruebas
+./tester/complete.sh --main      # Pruebas principales
+./tester/complete.sh --alignment # Pruebas de alineamiento
+./tester/complete.sh --extra     # Pruebas de funcionalidades adicionales
+./tester/complete.sh --stress    # Pruebas de estrés
+./tester/complete.sh --help      # Muestra la ayuda
 ```
 
-## 🔧 Environment variables
+## 🔧 Variables de Entorno
 
-The following environment variables can configure malloc behavior:
+Las siguientes variables de entorno pueden configurar el comportamiento de malloc:
 
-| Environment variable     | Internal equivalent       | Description                              |
-|--------------------------|---------------------------|------------------------------------------|
-| **MALLOC_ARENA_MAX**     | `M_ARENA_MAX`             | Maximum number of arenas                 |
-| **MALLOC_ARENA_TEST**    | `M_ARENA_TEST`            | Test threshold for dropping arenas       |
-| **MALLOC_PERTURB_**      | `M_PERTURB`               | Fills heap with a pattern                |
-| **MALLOC_CHECK_**        | `M_CHECK_ACTION`          | Action on memory errors                  |
-| **MALLOC_MIN_USAGE_**    | `M_MIN_USAGE`             | Minimum usage threshold for optimization |
-| **MALLOC_DEBUG**         | `M_DEBUG`                 | Enables debug mode                       |
-| **MALLOC_LOGGING**       | `M_LOGGING`               | Enables logging                          |
-| **MALLOC_LOGFILE**       | *(file path)*             | Log file (default: `"auto"`)             |
+| Variable de entorno      | Equivalente interno       | Descripción                             |
+|--------------------------|---------------------------|-----------------------------------------|
+| **MALLOC_ARENA_MAX**     | `M_ARENA_MAX`             | Límite máximo de arenas                 |
+| **MALLOC_ARENA_TEST**    | `M_ARENA_TEST`            | Umbral de prueba para eliminar arenas   |
+| **MALLOC_PERTURB_**      | `M_PERTURB`               | Rellena el heap con un patrón           |
+| **MALLOC_CHECK_**        | `M_CHECK_ACTION`          | Acción ante errores de memoria          |
+| **MALLOC_MIN_USAGE_**    | `M_MIN_USAGE`             | Umbral mínimo de uso para optimización  |
+| **MALLOC_DEBUG**         | `M_DEBUG`                 | Activa el modo debug                    |
+| **MALLOC_LOGGING**       | `M_LOGGING`               | Habilita logging                        |
+| **MALLOC_LOGFILE**       | *(ruta de archivo)*       | Archivo de log (por defecto `"auto"`)   |
 
-## 📚 Additional functions
+## 📚 Funciones Adicionales
 
 #### MALLOPT
 
-- Configures memory allocator parameters.
+- Configura parámetros del asignador de memoria.
 
 ```c
   int mallopt(int param, int value);
@@ -160,8 +160,8 @@ The following environment variables can configure malloc behavior:
   param – option selector (M_* constant).
   value – value assigned to the option.
 
-    • On success: returns 1.
-    • On failure: returns 0 and sets errno to:
+  • On success: returns 1.
+  • On failure: returns 0 and sets errno to:
       – EINVAL: unsupported param or invalid value.
 
 Supported params:
@@ -181,9 +181,9 @@ Notes:
 
 #### SHOW_ALLOC_MEM
 
-- Shows information about current allocated memory state and provides a summary of blocks in use.
+- Muestra información sobre el estado actual de la memoria asignada y proporciona un resumen de los bloques en uso.
 
-**Example output:**
+**Salida ejemplo:**
 ```
 ————————————
  • Arena #1
@@ -220,9 +220,9 @@ Notes:
 
 #### SHOW_ALLOC_MEM_EX
 
-- Extended version of show_alloc_mem with more detailed allocation info.
+- Versión extendida de show_alloc_mem que proporciona información más detallada sobre la memoria asignada.
 
-**Example output:**
+**Salida ejemplo:**
 ```
 ——————————————————————————————————————
  • Pointer: 0x703ab8cbf010 (Arena #1)
@@ -242,17 +242,17 @@ Notes:
 ```
 #### SHOW_ALLOC_HISTORY
 
-- Shows the history of allocations and frees performed by the program.
+- Muestra el historial de asignaciones y liberaciones de memoria realizadas por el programa.
 
-## 📄 License
+## 📄 Licencia
 
-This project is licensed under the WTFPL – [Do What the Fuck You Want to Public License](http://www.wtfpl.net/about/).
+Este proyecto está licenciado bajo la WTFPL – [Do What the Fuck You Want to Public License](http://www.wtfpl.net/about/).
 
 ---
 
 <div align="center">
 
-**💾 Developed as part of the 42 School curriculum 💾**
+**💾 Desarrollado como parte del curriculum de 42 School 💾**
 
 *"Because glibc is too mainstream"*
 
