@@ -6,7 +6,7 @@
 /*   By: vzurera- <vzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:07:24 by vzurera-          #+#    #+#             */
-/*   Updated: 2026/02/03 19:25:34 by vzurera-         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:41:32 by vzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@
 	#define ALIGN_UP(addr, align)		(((addr) + (align) - 1) & ~((align) - 1))																// Align address upwards to the nearest multiple of 'align'
 
 	// --- HEAP SIZES ---
-	#define TINY_CHUNK					512																										// Max size for tiny chunk
+	#define TINY_CHUNK					128																										// Max size for tiny chunk (before was 512)
 	#define TINY_BLOCKS					128																										// Number of tiny chunks per HEAP
 	#define TINY_SIZE					(((TINY_BLOCKS * TINY_CHUNK) + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1))										// Total size of tiny heap, aligned to page
 
-	#define SMALL_CHUNK					4096																									// Max size for small chunk
+	#define SMALL_CHUNK					2048																									// Max size for small chunk (before was 4096)
 	#define SMALL_BLOCKS				128																										// Number of small chunks per HEAP
 	#define SMALL_SIZE					(((SMALL_BLOCKS * SMALL_CHUNK) + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1))										// Total size of small heap, aligned to page
 
