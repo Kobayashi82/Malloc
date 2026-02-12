@@ -9,6 +9,9 @@
 doc/malloc\ 6.3.pdf
 doc/evaluation
 
+!images
+!images/**
+
 !inc
 !inc/**
 
@@ -20,7 +23,6 @@ doc/evaluation
 !README.md
 !README_es.md
 !LICENSE
-!Malloc.png
 
 !tester/
 !tester/complete/
