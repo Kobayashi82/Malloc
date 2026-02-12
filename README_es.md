@@ -10,7 +10,7 @@
 </div>
 
 <div align="center">
-  <img src="/images/Malloc.png">
+  <img src="/images/Malloc.jpg">
 </div>
 
 # Malloc
